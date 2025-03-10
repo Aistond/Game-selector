@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css">
+    <title>Text Adventure Game</title>
+</head>
+<body class="bg-light">
+    <div class="container mt-4">
+        <h1 class="text-center">Text Adventure Game</h1>
+        <div id="story" class="mt-4 mb-4"></div>
+        <div id="choices" class="d-flex flex-column"></div>
+        <button id="restart" class="btn btn-secondary mt-3" style="display: none;">Restart Game</button>
+        <a href="index.html" class="btn btn-primary mt-3">Back to Game Selection</a>
+    </div>
+
+    <script>
+        const storyElement = document.getElementById('story');
+        const choicesElement = document.getElementById('choices');
+        const restartButton = document.getElementById('restart');
+
+        const story = [
+            {
+                text: "You find yourself in a dark forest. The trees are tall and the air is thick with mist. Do you want to go left towards the sound of water or right towards the faint light?",
+                choices: [
+                    { text: "Left (towards the water)", next: 1 },
+                    { text: "Right (towards the light)", next: 2 }
+                ]
+            },
+            {
+                text: "You walk towards the sound of water and soon find a beautiful river. As you approach, you see a bridge. Do you want to cross the bridge or follow the river upstream?",
+                choices: [
+                    { text: "Cross the bridge", next: 3 },
+                    { text: "Follow the river upstream", next: 4 }
+                ]
+            },
+            {
+                text: "You head towards the light and discover a small campfire with a group of travelers. They invite you to join them. Do you want to sit and talk or continue on your journey?",
+                choices: [
+                    { text: "Sit and talk", next: 5 },
+                    { text: "Continue on your journey", next: 6 }
+                ]
+            },
+            {
+                text: "You cross the bridge and find a hidden village. The villagers welcome you and offer you food and shelter. You win!",
+                choices: []
+            },
+            {
+                text: "As you follow the river upstream, you encounter a waterfall. Do you want to climb up the rocks to explore behind the waterfall or turn back?",
+                choices: [
+                    { text: "Climb up the rocks", next: 7 },
+                    { text: "Turn back", next: 8 }
+                ]
+            },
+            {
+                text: "The travelers share stories of their adventures and offer you a magical amulet. Do you want to accept the amulet or decline it?",
+                choices: [
+                    { text: "Accept the amulet", next: 9 },
+                    { text: "Decline the amulet", next: 10 }
+                ]
+            },
+            {
+                text: "You continue on your journey and soon find yourself lost. The forest seems to close in around you. Game Over!",
+                choices: []
+            },
+            {
+                text: "You climb behind the waterfall and discover a hidden cave filled with treasures! You win!",
+                choices: []
+            },
+            {
+                text: "You turn back and find your way back to the river. You can either cross the bridge or follow the river downstream. What will you do?",
+                choices: [
+                    { text: "Cross the bridge", next: 3 },
+                    { text: "Follow the river downstream", next: 11 }
+                ]
+            },
+            {
+                text: "You accept the amulet, and it grants you the ability to see hidden paths. You can now choose to explore the forest or head back to the river.",
+                choices: [
+                    { text: "Explore the forest", next: 12 },
+                    { text: "Head back to the river", next: 11 }
+                ]
+            },
+            {
+                text: "You decline the amulet and continue your journey. However, you soon find yourself lost in the forest. Game Over!",
+                choices: []
+            },
+            {
+                text: "You follow the river downstream and eventually find your way back to the starting point. You can choose to go left or right again. What will you do?",
+                choices: [
+                    { text: "Go left", next: 1 },
+                    { text: "Go right", next: 2 }
+                ]
+            },
+            {
+                text: "You explore the forest and discover a hidden path that leads to a magical glade. You win!",
+                choices: []
+            }
+        ];
+
+        let currentStoryIndex = 0;
+
+        function displayStory() {
+            const currentStory = story[currentStoryIndex];
+            storyElement.innerHTML = currentStory.text;
+            choicesElement.innerHTML = '';
+            currentStory.choices.forEach(choice => {
+                const button = document.createElement('button');
+                button.className = 'btn btn-primary mt-2';
+                button.innerText = choice.text;
+                button.onclick = () => {
+                    currentStoryIndex = choice.next;
+                    if (currentStoryIndex >= story.length) {
+                        currentStoryIndex = 0; // Reset if out of bounds
+                    }
+                    displayStory();
+                };
+                choicesElement.appendChild(button);
+            });
+            restartButton.style.display = currentStory.choices.length === 0 ? 'block' : 'none';
+        }
+
+        displayStory();
+        restartButton.onclick = () => {
+            currentStoryIndex = 0;
+            displayStory();
+        };
+    </script>
+</body>
+</html>

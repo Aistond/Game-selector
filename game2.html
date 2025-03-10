@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css">
+    <title>Simple Quiz Game</title>
+</head>
+<body class="bg-light">
+    <div class="container mt-4">
+        <h1 class="text-center">Simple Quiz Game</h1>
+        <div id="quiz" class="mt-4"></div>
+        <button id="next" class="btn btn-primary mt-3" style="display: none;">Next Question</button>
+        <a href="index.html" class="btn btn-primary mt-3">Back to Game Selection</a>
+    </div>
+
+    <script>
+        const quizElement = document.getElementById('quiz');
+        const nextButton = document.getElementById('next');
+
+        const questions = [
+            {
+                question: "What is the capital of France?",
+                answers: ["Berlin", "Madrid", "Paris", "Lisbon"],
+                correct: 2
+            },
+            {
+                question: "What is 2 + 2?",
+                answers: ["3", "4", "5", "6"],
+                correct: 1
+            },
+            {
+                question: "What is the largest planet in our solar system?",
+                answers: ["Earth", "Mars", "Jupiter", "Saturn"],
+                correct: 2
+            }
+        ];
+
+        let currentQuestionIndex = 0;
+
+        function displayQuestion() {
+            const currentQuestion = questions[currentQuestionIndex];
+            quizElement.innerHTML = `<h4>${currentQuestion.question}</h4>`;
+            currentQuestion.answers.forEach((answer, index) => {
+                const button = document.createElement('button');
+                button.className = 'btn btn-secondary mt-2';
+                button.innerText = answer;
+                button.onclick = () => {
+                    if (index === currentQuestion.correct) {
+                        alert("Correct!");
+                    } else {
+                        alert("Wrong answer. Try again!");
+                    }
+                    nextButton.style.display = 'block';
+                };
+                quizElement.appendChild(button);
+            });
+        }
+
+        nextButton.onclick = () => {
+            currentQuestionIndex++;
+            if (currentQuestionIndex < questions.length) {
+                displayQuestion();
+                nextButton.style.display = 'none';
+            } else {
+                quizElement.innerHTML = "<h4>Quiz Completed!</h4>";
+                nextButton.style.display = 'none';
+            }
+        };
+
+        displayQuestion();
+    </script>
+</body>
+</html>

@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css">
+    <title>Game Selection</title>
+    <style>
+        body {
+            background-image: url('./image/bac.jpg'); /* Replace with your actual image path */
+            background-size: cover; /* Cover the entire body */
+            background-position: center; /* Center the background image */
+            background-repeat: no-repeat; /* Prevent the image from repeating */
+        }
+        .navbar {
+            background-color: #432a88; /* Solid color for the navbar */
+        }
+        .card {
+            height: 350px; /* Set a fixed height for the cards */
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            color: rgb(71, 56, 136); /* Change text color to white for better contrast */
+            border-radius: 15px; /* Rounded corners for the cards */
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Shadow effect for the cards */
+            transition: transform 0.2s; /* Smooth transition for hover effect */
+        }
+        .card:hover {
+            transform: scale(1.05); /* Scale effect on hover */
+        }
+        .card-img-top {
+            height: 150px; /* Set a fixed height for the images */
+            object-fit: cover; /* Ensure the image covers the area */
+            border-top-left-radius: 15px; /* Rounded corners for the top */
+            border-top-right-radius: 15px; /* Rounded corners for the top */
+        }
+        .card-body {
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between; /* Ensure space between title, text, and button */
+            padding: 10px; /* Add padding for the card body */
+            background-color: #007bff; /* Background color for the card body */
+            border-bottom-left-radius: 15px; /* Rounded corners for the bottom */
+            border-bottom-right-radius: 15px; /* Rounded corners for the bottom */
+        }
+        .btn-primary {
+            background-color: #0056b3; /* Darker blue for the button */
+            border: none; /* Remove border */
+        }
+        .btn-primary:hover {
+            background-color: #004494; /* Even darker blue on hover */
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Navigation Bar -->
+    <nav class="navbar navbar-expand-lg navbar-light">
+        <a class="navbar-brand" href="#">Game Selector</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNav">
+            <ul class="navbar-nav">
+                <li class="nav-item">
+                    <a class="nav-link" href="rules.html">How to Play</a> <!-- Link to rules.html -->
+                </li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- Game Cards -->
+    <div class="container mt-4">
+        <div class="row">
+            <div class="col-md-3 mb-4">
+                <div class="card">
+                    <img src="./image/adv.jpeg" class="card-img-top" alt="Game 1 Image"> <!-- Replace with actual image path -->
+                    <div class="card-body">
+                        <h5 class="card-title">Text Adventure</h5>
+                        <p class="card-text">Embark on a thrilling text adventure where your choices determine the outcome.</p>
+                        <a href="game1.html" class="btn btn-primary">Play Game 1</a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-md-3 mb-4">
+                <div class="card">
+                    <img src="./image/quiz.jpeg" class="card-img-top" alt="Game 2 Image"> <!-- Replace with actual image path -->
+                    <div class="card-body">
+                        <h5 class="card-title">Simple Quiz</h5>
+                        <p class="card-text">Test your knowledge with a fun quiz game.</p>
+                        <a href ="game2.html" class="btn btn-primary">Play Game 2</a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-md-3 mb-4">
+                <div class="card ">
+                    <img src="./image/mem.jpeg" class="card-img-top" alt="Game 3 Image"> <!-- Replace with actual image path -->
+                    <div class="card-body">
+                        <h5 class="card-title">Memory Card</h5>
+                        <p class="card-text">Challenge your memory with this exciting card matching game.</p>
+                        <a href="game3.html" class="btn btn-primary">Play Game 3</a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-md-3 mb-4">
+                <div class="card">
+                    <img src="./image/tic.jpeg" class="card-img-top" alt="Game 4 Image"> <!-- Replace with actual image path -->
+                    <div class="card-body">
+                        <h5 class="card-title">Tic Tac Toe</h5>
+                        <p class="card-text">Play the classic Tic Tac Toe game against a friend or the computer.</p>
+                        <a href="game4.html" class="btn btn-primary">Play Game 4</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/js/bootstrap.min.js"></script>
+</body>
+</html>
